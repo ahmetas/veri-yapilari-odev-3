@@ -3,4 +3,4 @@ project(VeriYapilariOdev3)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(VeriYapilariOdev3 main.cpp Queue.cpp Queue.h)
+add_executable(VeriYapilariOdev3 main.cpp Queue.cpp Queue.h BinarySearchTree.cpp BinarySearchTree.h Node.cpp Node.h)
