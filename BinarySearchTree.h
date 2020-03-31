@@ -4,11 +4,8 @@
 #include "Node.h"
 
 class BinarySearchTree {
-private:
-    Node* root;
 public:
-    BinarySearchTree();
-    void Insert();
+    Node* Insert(Node*, string&);
     void InOrder();
     void PreOrder();
     void PostOrder();
