@@ -9,8 +9,8 @@ class Queue {
 private:
     int size;
     int total = 0;
-    int front = -1;
     int rear = -1;
+    int front = -1;
     int* pointer;
 public:
     Queue(string);
@@ -18,6 +18,7 @@ public:
     friend ostream& operator<<(ostream& os, const Queue& q);
     void Enqueue(char);
     int TotalQueue();
+    int GetTotal();
     void Display();
     ~Queue();
 };

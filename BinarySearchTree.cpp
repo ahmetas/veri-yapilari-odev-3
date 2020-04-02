@@ -1,30 +1,32 @@
 #include "BinarySearchTree.h"
 
-Node* BinarySearchTree::Insert(Node* root, string& line) {
+BinarySearchTree::BinarySearchTree() {
+    root = nullptr;
+}
+
+Node* BinarySearchTree::Insert(Node* p, string& line) {
     int lenght = line.length();
     int lineTotal = 0;
     for (int i = 0; i <lenght ; ++i) {
         lineTotal += line[i] - '0';
     }
 
-    Node* temp;
-    if (root == nullptr){
+    Node* temp = nullptr;
+    if (p == nullptr){
         auto* queue = new Queue(line);
         temp = new Node();
         temp->SetData(queue);
-        delete queue;
         return temp;
     }
 
-    if (root->GetData()->TotalQueue() > lineTotal ){
-        root->SetLeft(Insert(root->GetLeft(),line));
+    if (p->GetData()->GetTotal() > lineTotal ){
+        p->SetLeft(Insert(p->GetLeft(), line));
     }
-    else if(root->GetData()->TotalQueue() < lineTotal){
-        root->SetRight(Insert(root->GetRight(),line));
+    else if(p->GetData()->GetTotal() < lineTotal){
+        p->SetRight(Insert(p->GetRight(), line));
     }
 
-    delete temp;
-    return temp;
+    return p;
 }
 
 void BinarySearchTree::InOrder() {

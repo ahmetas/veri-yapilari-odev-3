@@ -6,7 +6,7 @@ Queue::Queue(string line){
     for (int i = 0; i < size; ++i) {
         Enqueue(line.at(i));
     }
-    this->total = TotalQueue();
+    total = TotalQueue();
 }
 
 void Queue::operator=(const Queue &q) {
@@ -19,7 +19,7 @@ ostream &operator<<(ostream &os, const Queue &q) {
 }
 
 void Queue::Enqueue(char data) {
-    this->rear++;
+    rear++;
     pointer[rear] = data - '0';
 }
 
@@ -29,6 +29,10 @@ int Queue::TotalQueue() {
         total += pointer[rear];
         rear++;
     }
+    return total;
+}
+
+int Queue::GetTotal() {
     return total;
 }
 

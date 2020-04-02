@@ -15,7 +15,11 @@ int main() {
         if (line.back() == 13){
             line.pop_back();
         }
-        bst->Insert(root,line);
+        if (root == nullptr) {
+            root = bst->Insert(root, line);
+        } else {
+            bst->Insert(root, line);
+        }
     }
 
     delete bst;
