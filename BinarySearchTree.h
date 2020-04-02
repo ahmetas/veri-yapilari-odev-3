@@ -9,9 +9,9 @@ private:
 public:
     BinarySearchTree();
     Node* Insert(Node*, string&);
-    void InOrder();
-    void PreOrder();
-    void PostOrder();
+    void InOrder(Node*);
+    void PreOrder(Node*);
+    void PostOrder(Node*);
 };
 
 #endif //VERIYAPILARIODEV3_BINARYSEARCHTREE_H

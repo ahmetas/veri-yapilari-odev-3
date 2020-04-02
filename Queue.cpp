@@ -36,12 +36,6 @@ int Queue::GetTotal() {
     return total;
 }
 
-void Queue::Display() {
-    for (int i = 0; i < size; ++i) {
-        cout << pointer[i];
-    }
-}
-
 Queue::~Queue() {
     delete pointer;
 }

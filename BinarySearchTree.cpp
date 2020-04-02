@@ -26,17 +26,30 @@ Node* BinarySearchTree::Insert(Node* p, string& line) {
         p->SetRight(Insert(p->GetRight(), line));
     }
 
+    delete temp;
     return p;
 }
 
-void BinarySearchTree::InOrder() {
-
+void BinarySearchTree::InOrder(Node* p) {
+    if (p){
+        InOrder(p->GetLeft());
+        cout << *(p->GetData()) << " ";
+        InOrder(p->GetRight());
+    }
 }
 
-void BinarySearchTree::PreOrder() {
-
+void BinarySearchTree::PreOrder(Node* p) {
+    if (p){
+        cout << *(p->GetData()) << " ";
+        InOrder(p->GetLeft());
+        InOrder(p->GetRight());
+    }
 }
 
-void BinarySearchTree::PostOrder() {
-
+void BinarySearchTree::PostOrder(Node* p) {
+    if (p){
+        InOrder(p->GetLeft());
+        InOrder(p->GetRight());
+        cout << *(p->GetData()) << " ";
+    }
 }

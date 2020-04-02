@@ -19,7 +19,6 @@ public:
     void Enqueue(char);
     int TotalQueue();
     int GetTotal();
-    void Display();
     ~Queue();
 };
 

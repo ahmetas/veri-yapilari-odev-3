@@ -22,6 +22,15 @@ int main() {
         }
     }
 
+    cout << "InOrder:" << endl;
+    bst->InOrder(root);
+    cout << endl;
+    cout << "PreOrder:" << endl;
+    bst->PreOrder(root);
+    cout << endl;
+    cout << "PostOrder:" << endl;
+    bst->PostOrder(root);
+
     delete bst;
     return 0;
 }
