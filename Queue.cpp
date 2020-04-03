@@ -1,16 +1,6 @@
 #include "Queue.h"
 
-Queue::Queue(string line){
-    size = line.length();
-    pointer = new int[size];
-    for (int i = 0; i < size; ++i) {
-        Enqueue(line.at(i));
-    }
-    total = TotalQueue();
-}
-
-void Queue::operator=(const Queue &q) {
-    this->total = q.total;
+Queue::Queue(){
 }
 
 ostream &operator<<(ostream &os, const Queue &q) {
@@ -18,21 +8,42 @@ ostream &operator<<(ostream &os, const Queue &q) {
     return os;
 }
 
-void Queue::Enqueue(char data) {
-    rear++;
-    pointer[rear] = data - '0';
+void Queue::Expand() {
+    if (size < 1) {
+        size = 1;
+        pointer = new int[size];
+        return;
+    }
+
+    auto temp = new int[2 * size];
+
+    for (int i = 0; i < size; ++i) {
+        temp[i] = pointer[i];
+    }
+    delete[] pointer;
+    pointer = temp;
+
+    size = 2 * size;
 }
 
-int Queue::TotalQueue() {
-    rear = 0;
-    for (int i = 0; i < size; ++i) {
-        total += pointer[rear];
-        rear++;
+void Queue::Enqueue(int data) {
+    rear++;
+
+    if (rear >= size) {
+        Expand();
     }
-    return total;
+
+    pointer[rear] = data;
 }
 
 int Queue::GetTotal() {
+    if (total > 0) {
+        return total;
+    }
+
+    for (int i = 0; i <= rear; ++i) {
+        total += pointer[i];
+    }
     return total;
 }
 

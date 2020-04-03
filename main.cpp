@@ -4,32 +4,46 @@
 
 using namespace std;
 
+inline void DeleteQueue(Queue *queue) {
+    delete queue;
+}
+
+inline void PrintQueue(Queue *queue) {
+    cout << *queue << " ";
+}
+
 int main() {
     ifstream inFile;
     inFile.open(R"(../sayilar.txt)");
 
     string line;
     auto* bst = new BinarySearchTree;
-    Node* root = nullptr;
     while (getline(inFile, line)){
-        if (line.back() == 13){
-            line.pop_back();
+        auto queue = new Queue();
+
+        for (char c : line) {
+            int value = c - '0';
+
+            if (value < 0 || value > 9) {
+                continue;
+            }
+
+            queue->Enqueue(value);
         }
-        if (root == nullptr) {
-            root = bst->Insert(root, line);
-        } else {
-            bst->Insert(root, line);
-        }
+
+        bst->Insert(*queue);
     }
 
     cout << "InOrder:" << endl;
-    bst->InOrder(root);
+    bst->InOrder(PrintQueue);
     cout << endl;
     cout << "PreOrder:" << endl;
-    bst->PreOrder(root);
+    bst->PreOrder(PrintQueue);
     cout << endl;
     cout << "PostOrder:" << endl;
-    bst->PostOrder(root);
+    bst->PostOrder(PrintQueue);
+
+    bst->PostOrder(DeleteQueue);
 
     delete bst;
     return 0;

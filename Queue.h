@@ -7,17 +7,17 @@ using namespace std;
 
 class Queue {
 private:
-    int size;
+    int size = 0;
     int total = 0;
     int rear = -1;
     int front = -1;
     int* pointer;
+
+    void Expand();
 public:
-    Queue(string);
-    void operator=(const Queue& q);
+    Queue();
     friend ostream& operator<<(ostream& os, const Queue& q);
-    void Enqueue(char);
-    int TotalQueue();
+    void Enqueue(int);
     int GetTotal();
     ~Queue();
 };
